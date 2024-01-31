@@ -6,6 +6,7 @@ import com.pigovsky.face_detector.connection.ServerConnectionListener;
 import com.pigovsky.face_detector.connection.ServerSocketConnectionListener;
 import com.pigovsky.face_detector.face.FaceDetector;
 import com.pigovsky.face_detector.face.MockFaceDetector;
+import com.pigovsky.face_detector.face.OpenCvFaceDetector;
 
 public class Server implements Runnable {
     private final ServerConnectionListener serverConnectionListener;
@@ -20,8 +21,7 @@ public class Server implements Runnable {
             Integer.parseInt(args[1])
         ) : DefaultConfiguration.serverPort;
         serverConnectionListener = new ServerSocketConnectionListener(serverPort);
-        faceDetector = new MockFaceDetector(); // TODO: Replace with OpenCvFaceDetector in case
-        // TODO: when DefaultConfiguration.mock is false
+        faceDetector = DefaultConfiguration.mock ? new MockFaceDetector() : new OpenCvFaceDetector();
     }
 
     @Override

@@ -13,7 +13,7 @@ public class Photo {
     }
 
     public static Photo fromBytes(byte[] data) {
-        Mat bitmap = DefaultConfiguration.mock ? null : Imgcodecs.imdecode(new MatOfByte(data), Imgcodecs.CV_LOAD_IMAGE_COLOR);
+        Mat bitmap = DefaultConfiguration.mock ? null : Imgcodecs.imdecode(new MatOfByte(data), Imgcodecs.IMREAD_COLOR);
         return new Photo(bitmap);
     }
 
@@ -22,7 +22,7 @@ public class Photo {
             return new byte[0];
         }
         MatOfByte bytes = new MatOfByte();
-        Imgcodecs.imencode("img", bitmap, bytes);
+        Imgcodecs.imencode(".jpg", bitmap, bytes);
         return bytes.toArray();
     }
 
