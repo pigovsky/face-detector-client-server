@@ -1,9 +1,13 @@
 package com.pigovsky.face_detector.photo;
 
 import com.pigovsky.face_detector.common.DefaultConfiguration;
+import com.pigovsky.face_detector.face.Face;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
 import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
 
 public class Photo {
     private final Mat bitmap;
@@ -36,5 +40,10 @@ public class Photo {
 
     public Mat getBitmap() {
         return bitmap;
+    }
+
+    public void highlightFace(Face face) {
+        Rect faceRect = new Rect(face.getLeft(), face.getTop(), face.getWidth(), face.getHeight());
+        Imgproc.rectangle(getBitmap(), faceRect.tl(), faceRect.br(), new Scalar(0, 0, 255), 3);
     }
 }

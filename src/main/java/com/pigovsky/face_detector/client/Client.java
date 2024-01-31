@@ -40,5 +40,8 @@ public class Client implements Runnable {
         Face face = faceDetector.detect(photo);
         clientToServerConnection.close();
         System.out.println(face);
+
+        photo.highlightFace(face);
+        new FilesystemPhotoSender("result.jpg").send(photo);
     }
 }

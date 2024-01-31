@@ -26,3 +26,6 @@ java com.pigovsky.face_detector.Main send /path/to/test.png [host:port]
 where /path/to/test.png is path to a photo file to detect a face on,
 host:port is an optional TCP/IP host and port pair pointing to a server instance 
 to send the photo to and to detect a face on.
+
+The client also saves a copy of the input photo with the found face highlighted
+to the result.jpg file in the current working directory.
