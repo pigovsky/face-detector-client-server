@@ -26,7 +26,7 @@ public class Photo {
             return new byte[0];
         }
         MatOfByte bytes = new MatOfByte();
-        Imgcodecs.imencode(".jpg", bitmap, bytes);
+        Imgcodecs.imencode(".png", bitmap, bytes);
         return bytes.toArray();
     }
 
