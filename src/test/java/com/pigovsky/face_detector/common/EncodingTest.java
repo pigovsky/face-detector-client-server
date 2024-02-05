@@ -1,4 +1,4 @@
-import com.pigovsky.face_detector.common.Encoding;
+package com.pigovsky.face_detector.common;
 import org.junit.Test;
 import org.junit.Assert;
 

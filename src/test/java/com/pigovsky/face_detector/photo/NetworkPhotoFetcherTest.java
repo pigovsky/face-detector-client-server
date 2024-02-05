@@ -1,5 +1,5 @@
-import com.pigovsky.face_detector.common.Encoding;
-import com.pigovsky.face_detector.photo.*;
+package com.pigovsky.face_detector.photo;
+import com.pigovsky.face_detector.connection.ConnectionMock;
 import nu.pattern.OpenCV;
 import org.junit.Assert;
 import org.junit.BeforeClass;

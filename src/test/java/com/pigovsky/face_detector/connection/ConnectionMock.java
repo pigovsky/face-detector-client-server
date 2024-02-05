@@ -1,9 +1,6 @@
-import com.pigovsky.face_detector.connection.Connection;
-
-import java.util.ArrayList;
+package com.pigovsky.face_detector.connection;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+
 
 public class ConnectionMock extends Connection {
 
