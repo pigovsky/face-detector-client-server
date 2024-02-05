@@ -4,12 +4,20 @@
 It is a client-server app that allows client nodes to detect faces on a server node.
 
 
+## Compile instructions
+
+in order to get a self-contained fat jar, just hit:
+
+```bash
+mvn package
+```
+
 ## Server
 
 Server can be run as
 
-```
-java com.pigovsky.face_detector.Main listen [port]
+```bash
+java -jar target/face-detector-server-1.0-SNAPSHOT.jar listen [port]
 ```
 
 where port is an optional integer specifying the TCP/IP port listening for client requests.
@@ -19,8 +27,8 @@ If port is not specified, it defaults to 9998.
 
 Client can be run as
 
-```
-java com.pigovsky.face_detector.Main send /path/to/test.png [host:port]
+```bash
+java -jar target/face-detector-server-1.0-SNAPSHOT.jar send /path/to/test.png [host:port]
 ```
 
 where /path/to/test.png is path to a photo file to detect a face on,
