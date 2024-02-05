@@ -12,6 +12,16 @@ in order to get a self-contained fat jar, just hit:
 mvn package
 ```
 
+
+## Test instructions
+
+You can run the app tests using
+
+```bash
+mvn test 
+```
+
+
 ## Server
 
 Server can be run as
