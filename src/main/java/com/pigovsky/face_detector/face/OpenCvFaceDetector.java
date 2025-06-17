@@ -8,12 +8,17 @@ import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.objdetect.Objdetect;
 
 public class OpenCvFaceDetector implements FaceDetector {
+    private final CascadeClassifier cascadeClassifier;
+
+    public OpenCvFaceDetector() {
+        cascadeClassifier = new CascadeClassifier();
+        cascadeClassifier.load("./src/main/resources/haarcascades/haarcascade_frontalface_alt.xml");
+    }
+
     @Override
     public Face detect(Photo photo) {
         MatOfRect facesDetected = new MatOfRect();
-        CascadeClassifier cascadeClassifier = new CascadeClassifier();
         int minFaceSize = Math.round(photo.getBitmap().rows() * 0.1f);
-        cascadeClassifier.load("./src/main/resources/haarcascades/haarcascade_frontalface_alt.xml");
         cascadeClassifier.detectMultiScale(photo.getBitmap(),
             facesDetected,
             1.1,
@@ -22,7 +27,9 @@ public class OpenCvFaceDetector implements FaceDetector {
             new Size(minFaceSize, minFaceSize),
             new Size()
         );
-        Rect headFace = facesDetected.toArray()[0];
+        Rect headFace = facesDetected.toArray().length > 0 ?
+            facesDetected.toArray()[0] :
+            new Rect(0,0,0,0);
         return new Face(
             headFace.x,
             headFace.y,
