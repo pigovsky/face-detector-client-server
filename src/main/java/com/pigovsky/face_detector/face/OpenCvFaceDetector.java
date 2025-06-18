@@ -12,7 +12,18 @@ public class OpenCvFaceDetector implements FaceDetector {
 
     public OpenCvFaceDetector() {
         cascadeClassifier = new CascadeClassifier();
-        cascadeClassifier.load("./src/main/resources/haarcascades/haarcascade_frontalface_alt.xml");
+        String cascadeClassifierPath = System.getenv("CASCADE_CLASSIFIER_PATH");
+        if (
+            !cascadeClassifier.load(
+            cascadeClassifierPath == null ?
+                "./src/main/resources/haarcascades/haarcascade_frontalface_alt.xml" :
+                cascadeClassifierPath
+            )
+        ){
+            throw new RuntimeException(
+                "Could not load OpenCV cascade classifier. Make sure you have a valid CASCADE_CLASSIFIER_PATH."
+            );
+        }
     }
 
     @Override
