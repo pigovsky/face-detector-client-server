@@ -39,7 +39,6 @@ def get_zones(token: str) -> Any:
         json=REGION,
     )
     text = '['+','.join(resp.text.splitlines())+']'
-    print(text)
     data = json.loads(text)
     return list(map(
         lambda x: x.get('data', {})
@@ -104,7 +103,7 @@ def create_app_inst(token: str, zone: dict) -> Any:
             **REGION,
             "appinst": {
                 "key": {
-                    "name": "fd1",
+                    "name": f'{APP_DEFINITION["name"]}-{zone["name"]}',
                     "organization": ORG
                 },
                 "app_key": APP_DEFINITION,
@@ -112,7 +111,7 @@ def create_app_inst(token: str, zone: dict) -> Any:
             }
         }
     )
-    return resp.json()
+    return resp.text
 
 
 if __name__ == "__main__":
